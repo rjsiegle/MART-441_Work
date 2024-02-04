@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Digging Decisions</title>
+    <link rel="stylesheet" href="main.css">
+        <script>
+            // welcome message
+            let userName = prompt("Enter your name");
+            if (userName) {
+                document.write("<p> Welcome, " + userName + "!</p>");
+            } else {
+                document.write("<p>Welcome Guest!</p>");
+            }
+            </script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+   <img id = "templeImage" src="temple.jpg" height="219" width="295" class="center">
+   <br>
+    <h1>The Temple of the Feathered Serpent</h1>
+    <div id="story">
+        You are a student at the University of Montana studying Archaelogy. Your new roommate also studies Archaelogy and is the child of reknowned Archaelogists Roman and Anita Trowel. For Christmas this year, your parents have decided to travel to Mexico. The Trowel Family will also be there over the holiday working in Teotihuacan. Your new roommate invites you to meet the family and check out their work. Do you take your roommate up on the offer? 
+    </div>
+    <br>
+
+    <button id="choice1" onclick="storyFunction(1);">Yes</button>&nbsp;
+    <button id="choice2" onclick="storyFunction(2);">No</button>
+   
+</body>
+
+    </html>
