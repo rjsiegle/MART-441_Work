@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messi Adventure!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Messi Adventure!</h1>
+    <div id="output">
+        <img id="mainImage" src="./images/start.jpg" height="auto" width="300" alt="Messi Sleeping">
+        <br>
+    </div>
+    <div id="story"></div>
+    <div id="points">Points: 0</div>
+    <script>
+        var storyElement = document.getElementById("story");
+        var mainImageElement = document.getElementById("mainImage");
+        var pointsElement = document.getElementById("points");
+        var points = 0;
+
+        function startAdventure() {
+            storyElement.innerHTML = "It's a lazy Saturday morning, and Messi the JRT mix is asleep on the couch. You can help him make his day an adventure by picking a number between 1 and 5.";
+            mainImageElement.src = "./images/sleep.jpg";
+        }
+
+        function play(decision) {
+            var result;
+            switch (decision) {
+                case 1:
+                    result = "Messi found a bone! He's having a great time chewing it.";
+                    mainImageElement.src = "./images/bone.JPG";
+                    points += 10; // Award 10 points for finding a bone
+                    break;
+                case 2:
+                    result = "Messi angers a witch and is cursed and becomes a messilope!";
+                    mainImageElement.src = "./images/messilope.jpg";
+                    point -= 5; // Don't get cursed silly dog
+                    break;
+                case 3:
+                    result = "Messi runs outside after a rabbit, and he gets picked up by the dog catcher!";
+                    mainImageElement.src = "./images/jail.jpg";
+                    points -= 5; // Deduct 5 points for getting caught by the dog catcher
+                    break;
+                case 4:
+                    result = "Messi found a toy and starts playing tug with his owner.";
+                    mainImageElement.src = "./images/toy.JPG";
+                    break;
+                case 5:
+                    result = "Messi is taken on a walk by a puppy.";
+                    mainImageElement.src = "./images/walk.jpg";
+                    points += 20; // Award 20 points for going on a walk
+                    break;
+            }
+
+            storyElement.innerHTML = result;
+            pointsElement.textContent = "Points: " + points;
+        }
+
+        function submitDecision() {
+            var decisionInput = document.getElementById("decision");
+            var decision = parseInt(decisionInput.value);
+
+            if (isNaN(decision) || decision < 1 || decision > 5) {
+                alert("Invalid input! Please enter a number between 1 and 5.");
+                decisionInput.value = ""; // Clear the input field
+            } else {
+                play(decision);
+                decisionInput.value = ""; // Clear the input field
+            }
+        }
+
+        function restartAdventure() {
+            points = 0; // Reset points
+            pointsElement.textContent = "Points: " + points;
+            startAdventure(); // Start the adventure when the page loads
+        }
+
+        startAdventure(); // Start the adventure when the page loads
+    </script>
+    <div>
+        <input type="text" id="decision" placeholder="Enter your decision (1-5)">
+        <button onclick="submitDecision()">Submit</button>
+        <button onclick="restartAdventure()">Restart</button>
+    </div>
+</body>
+</html>
