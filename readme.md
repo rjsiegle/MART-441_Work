@@ -1,7 +1,0 @@
-##Week 3 - Successes and Challenges (and How I Overcame Them)
-
-I worked through the course website with relative ease, however when it came to implementing additional functions into the game, I struggled significantly. In order to use the addition function, I implimented a prompt. I struggled significantly with this because when I put it into main.js, it returned an error "non-null assertions can only be used in TypeScript files". I did look into this using github and I still am not entirely sure what that error is and why I got it. I did manage to resolve the issue by moving that script off of main.js and putting it into my index.html header as it's own script. 
-
-The second problem I encountered was in making changes to the image shown based on the choice selected. I believe i was really close to getting this to work, and I believe the problem was in creating the file link to the additional images, but after 4 hours of playing with this, I gave up. I realize that's not ideal, and I would have really liked to have figured it out, but perhaps someone else will have figured it out and I can see how they did it. I feel like the hangup truly is something minor and I did have the general understanding down, but perhaps I was entirely off.
-
-Despite running into major issues implimenting the changes I wanted to make based on the general direction of the example, I felt like this was a really enjoyable assignment. I look forward to growing my understanding of javascript. 
