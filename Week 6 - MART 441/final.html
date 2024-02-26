@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Memory Game</h1>
+    <div id="playerDataContainer"></div> <!-- Container to display player data -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var playerDataJSON = sessionStorage.getItem("playerData");
+            var playerData = JSON.parse(playerDataJSON);
+            var playerDataContainer = document.getElementById("playerDataContainer");
+
+            // Check if playerData exists
+            if (playerData) {
+                // Print player data on the page
+                playerDataContainer.innerHTML = "<p>First Name: " + playerData.firstname + "</p>" +
+                                                 "<p>Last Name: " + playerData.lastname + "</p>" +
+                                                 "<p>Age: " + playerData.age + "</p>" +
+                                                 "<p>Attempts: " + playerData.attempts + "</p>";
+            } else {
+                playerDataContainer.textContent = "Player data not found.";
+            }
+        });
+    </script>
+</body>
+</html>
