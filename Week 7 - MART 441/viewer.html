@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewfinder</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>Through the ViewMaster: Social Justice in Art</h1>
+    <div id="SocialJusticeInArt"></div>
+    <div class="centered-content">
+        <div id="title" class="hidden">Title: </div>
+        <div id="description" class="hidden">Description: </div>
+        <div id="artist" class="hidden">Artist: </div>
+        <div id="year" class="hidden">Year: </div>
+        <br>
+        <button id="btnSubmit">Next</button>
+    </div>
+    
+    <br>
+    <div class="centered-images">
+    <img id="image1" src="./images/thegreenline.webp" style="display: none;">
+    <img id="image2" src="./images/blankslate.jpeg" style="display:none;">
+    <img id="image3" src="./images/smile.jpeg" style="display: none;">
+    <img id="image4" src="./images/Outcry.png" style="display: none;">
+    <img id="image5" src="./images/breonnataylor.jpeg" style="display: none;">
+    <img id="image6" src="./images/nsrgnts_mural.png" style="display: none;">
+    <img id="image7" src="./images/SunMad.jpeg" style="display: none;">
+    <img id="image8" src="./images/thecoffeepickers.jpeg" style="display: none;">
+    <img id="image9" src="./images/rozeal.jpeg" style="display: none;">
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+            initializeArray();
+            document.getElementById("btnSubmit").addEventListener("click", accessInformation);
+        });
+</script>
+</body>
+</html>
+

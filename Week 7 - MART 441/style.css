@@ -1,0 +1,29 @@
+body {
+    background-color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+}
+
+h1 {
+text-align: center;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+color: coral;
+}
+
+.centered-content {
+    text-align: center; /* Center the content horizontally */
+}
+
+.centered-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-images img {
+    height: 560px; /* Adjust the width as needed */
+}
+
+.hidden {
+    display: none;
+}
