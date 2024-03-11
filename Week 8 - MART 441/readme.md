@@ -1,0 +1,1 @@
+I did use chatgpt this week for help with syntax error and for making sure I had everything set up correctly. I also used it to help me get the random assortment and number of shapes. 
