@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Displyed Information Style */
+        #FoodInformation {
+            padding: 20px;
+            border: 5px solid #040404;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: Verdana, sans-serif;
+            font-size: smaller;
+        }
+
+        /* Button Styling */
+        #btnSubmit {
+            background-color: #391596;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: medium;
+        }
+
+        /* Button Hover Stylingt */
+        #btnSubmit:hover {
+            background-color: #aa0003;
+        }
+
+        /* Curson Style for Food Items */
+        #FoodInformation ul li {
+            cursor: pointer;
+        }
+
+        /* Style for the list items hover effect */
+        #FoodInformation ul li:hover {
+            color: blue;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $("#btnSubmit").click(function() {
+                $.getJSON("food.json", function(data) {
+                    var foodInfo = "<ul>";
+                    foodInfo += "<li><strong>Country:</strong> " + data.results[0].country + "</li>";
+                    foodInfo += "<li><strong>City:</strong> " + data.results[0].city + "</li>";
+                    foodInfo += "<li><strong>Address:</strong> " + data.results[0].address_1 + "</li>";
+                    foodInfo += "<li><strong>Reason for Recall:</strong> " + data.results[0].reason_for_recall + "</li>";
+                    foodInfo += "<li><strong>Product Quantity:</strong> " + data.results[0].product_quantity + "</li>";
+                    foodInfo += "<li><strong>Code Info:</strong> " + data.results[0].code_info + "</li>";
+                    foodInfo += "<li><strong>Distribution Pattern:</strong> " + data.results[0].distribution_pattern + "</li>";
+                    foodInfo += "<li><strong>State:</strong> " + data.results[0].state + "</li>";
+                    foodInfo += "<li><strong>Product Description:</strong> " + data.results[0].product_description + "</li>";
+                    foodInfo += "<li><strong>Report Date:</strong> " + data.results[0].report_date + "</li>";
+                    foodInfo += "<li><strong>Classification:</strong> " + data.results[0].classification + "</li>";
+                    foodInfo += "<li><strong>Recalling Firm:</strong> " + data.results[0].recalling_firm + "</li>";
+                    foodInfo += "<li><strong>Recall Number:</strong> " + data.results[0].recall_number + "</li>";
+                    foodInfo += "<li><strong>Initial Firm Notification:</strong> " + data.results[0].initial_firm_notification + "</li>";
+                    foodInfo += "<li><strong>Product Type:</strong> " + data.results[0].product_type + "</li>";
+                    foodInfo += "<li><strong>Event ID:</strong> " + data.results[0].event_id + "</li>";
+                    foodInfo += "<li><strong>Recall Initiation Date:</strong> " + data.results[0].recall_initiation_date + "</li>";
+                    foodInfo += "<li><strong>Postal Code:</strong> " + data.results[0].postal_code + "</li>";
+                    foodInfo += "<li><strong>Voluntary Mandated:</strong> " + data.results[0].voluntary_mandated + "</li>";
+                    foodInfo += "<li><strong>Status:</strong> " + data.results[0].status + "</li>";
+                    foodInfo += "</ul>";
+                    $("#FoodInformation").html(foodInfo);
+                });
+            });
+
+            // Custom jQuery plugin (Hovers blue)
+            $.fn.hoverBlue = function() {
+                $(this).hover(function() {
+                    $(this).css('color', 'blue');
+                }, function() {
+                    $(this).css('color', ''); // Reset color on mouse out
+                });
+            };
+
+            // Apply Plug IN
+            $('#FoodInformation').find('li').hoverBlue();
+        });
+    </script>
+</head>
+
+<body>
+    <h2>FDA Product Recalls</h2>
+    <div id="FoodInformation"></div>
+    <br>
+    <button id="btnSubmit">Show Information</button>
+   
+</body>
+
+</html>
