@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    margin: 0;
+}
+
+canvas {
+    border: 2px solid grey;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 10px;
+}
+
+p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    margin-top: 20px;
+}
+
+h1 {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24pt;
+    margin-top: 20px;
+}

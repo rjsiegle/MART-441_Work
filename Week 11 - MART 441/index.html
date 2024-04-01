@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var backgroundMusic = document.getElementById("backgroundMusic");
+            if (backgroundMusic) {
+                var playPromise = backgroundMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        console.log("Audio playback started.");
+                    }).catch(error => {
+                        console.error("Auto-play was prevented:", error);
+                    });
+                }
+            } else {
+                console.error("Background music element not found!");
+            }
+
+            var playButton = document.getElementById("playButton");
+            if (playButton) {
+                playButton.addEventListener('click', function() {
+                    var backgroundMusic = document.getElementById("backgroundMusic");
+                    if (backgroundMusic) {
+                        backgroundMusic.play();
+                    } else {
+                        console.error("Background music element not found!");
+                    }
+                });
+            } else {
+                console.error("Play button element not found!");
+            }
+
+            var stopButton = document.getElementById("stopButton");
+            if (stopButton) {
+                stopButton.addEventListener('click', function() {
+                    var backgroundMusic = document.getElementById("backgroundMusic");
+                    if (backgroundMusic) {
+                        backgroundMusic.pause();
+                        backgroundMusic.currentTime = 0;
+                    } else {
+                        console.error("Background music element not found!");
+                    }
+                });
+            } else {
+                console.error("Stop button element not found!");
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <h1>TAG!</h1>
+    <p>Directions: use the arrow keys to tag the white square. Avoid the yellow square. If you reach 20 points, you win. If you go below -20 points, you lose. Tag, you're it!</p>
+    <canvas id="myCanvas" width="800" height="400"></canvas>
+    <button id="playButton">Play Music</button>
+    <button id="stopButton">Stop Music</button>
+    <audio id="backgroundMusic" src="happyday.mp3" loop></audio>
+    <script src="main.js"></script>
+</body>
+
+</html>
