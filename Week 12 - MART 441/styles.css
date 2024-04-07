@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('fonts/header.ttf') format('truetype');
+}
+
+body {
+    background-color: orange;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    text-align: center;
+    font-family: 'CustomFont', sans-serif;
+    font-size: 36px; 
+    padding-top: 20px; 
+}
+
+#canvasContainer {
+    display: flex;
+    justify-content: center;
+    height: 60vh;
+}
+
+#myCanvas {
+    background-color: white;
+    border: black;
+    border-style: solid;
+    border-width: 5px;
+}
