@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Babylon Template</title>
+  <style>
+    html,
+    body {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      position: relative; /* Ensure positioning relative to the body */
+    }
+
+    #renderCanvas {
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+
+    h1 {
+      position: fixed; /* Fixed positioning */
+      top: 20px; /* Adjust top position as needed */
+      left: 50%; /* Center horizontally */
+      transform: translateX(-50%); /* Center horizontally */
+      margin: 0;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      z-index: 999; /* Ensure it's above other content */
+    }
+
+    .link {
+      position: fixed; /* Fixed positioning */
+      bottom: 20px; /* Adjust bottom position as needed */
+      left: 50%; /* Center horizontally */
+      transform: translateX(-50%); /* Center horizontally */
+      text-decoration: none;
+      color: #333;
+      background-color: #fff;
+      padding: 10px 20px;
+      border: 1px solid #333;
+      border-radius: 5px;
+    }
+  </style>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+</head>
+<body>
+  <canvas id="renderCanvas" touch-action="none"></canvas>
+
+  <script>
+    const canvas = document.getElementById("renderCanvas"); // Get the canvas element
+    const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+
+    // Add your code here matching the playground format
+    const createScene = function () {
+      const scene = new BABYLON.Scene(engine);
+
+      // Load custom object from OBJ file
+      BABYLON.SceneLoader.ImportMesh("", "", "mybuild.obj", scene, function (meshes) {
+        // Adjust properties of the loaded mesh
+        const customMesh = meshes[0];
+        customMesh.position = new BABYLON.Vector3(0, 0, 0);
+        customMesh.scaling = new BABYLON.Vector3(1, 1, 1);
+        customMesh.rotation = new BABYLON.Vector3(0, Math.PI, 0); // Optionally rotate the mesh
+      });
+
+      // Directional light
+      const light = new BABYLON.DirectionalLight("light", new BABYLON.Vector3(-1, -2, -1), scene);
+      light.intensity = 0.7; // Adjust the light intensity as needed
+
+      const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 15, new BABYLON.Vector3(0, 0, 0));
+      camera.attachControl(canvas, true);
+
+      return scene;
+    };
+
+    const scene = createScene(); //Call the createScene function
+
+    // Register a render loop to repeatedly render the scene
+    engine.runRenderLoop(function () {
+      scene.render();
+    });
+
+    // Watch for browser/canvas resize events
+    window.addEventListener("resize", function () {
+      engine.resize();
+    });
+  </script>
+  <h1>My Build</h1>
+  <a href="index.html" class="link">Back to Index</a>
+</body>
+</html>
