@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Babylon Template</title>
+  <style>
+    html,
+    body {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      position: relative; /* Ensure positioning relative to the body */
+    }
+
+    #renderCanvas {
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+
+    h1 {
+      position: fixed; /* Fixed positioning */
+      top: 20px; /* Adjust top position as needed */
+      left: 50%; /* Center horizontally */
+      transform: translateX(-50%); /* Center horizontally */
+      margin: 0;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      z-index: 999; /* Ensure it's above other content */
+    }
+
+    .link {
+      position: fixed; /* Fixed positioning */
+      bottom: 20px; /* Adjust bottom position as needed */
+      left: 50%; /* Center horizontally */
+      transform: translateX(-50%); /* Center horizontally */
+      text-decoration: none;
+      color: #333;
+      background-color: #fff;
+      padding: 10px 20px;
+      border: 1px solid #333;
+      border-radius: 5px;
+    }
+  </style>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+</head>
+<body>
+  <canvas id="renderCanvas" touch-action="none"></canvas>
+
+  <script>
+    const canvas = document.getElementById("renderCanvas"); // Get the canvas element
+    const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+
+    // Add your code here matching the playground format
+    const createScene = function () {
+      const scene = new BABYLON.Scene(engine);
+
+      // Create five different shapes
+      const box1 = BABYLON.MeshBuilder.CreateBox("box1", {});
+      box1.position.x = -6;
+      box1.name = "box1";
+      box1.material = new BABYLON.StandardMaterial("box1Material", scene);
+      box1.material.diffuseColor = new BABYLON.Color3(1, 0, 0); // Red
+
+      const sphere1 = BABYLON.MeshBuilder.CreateSphere("sphere1", { diameter: 2 }, scene);
+      sphere1.position.x = -3;
+      sphere1.name = "sphere1";
+      sphere1.material = new BABYLON.StandardMaterial("sphere1Material", scene);
+      sphere1.material.diffuseColor = new BABYLON.Color3(0, 1, 0); // Green
+
+      const cylinder1 = BABYLON.MeshBuilder.CreateCylinder("cylinder1", { diameterTop: 2, diameterBottom: 2, height: 2 }, scene);
+      cylinder1.name = "cylinder1";
+      cylinder1.material = new BABYLON.StandardMaterial("cylinder1Material", scene);
+      cylinder1.material.diffuseColor = new BABYLON.Color3(0, 0, 1); // Blue
+
+      const sphere2 = BABYLON.MeshBuilder.CreateSphere("sphere2", { diameter: 2 }, scene);
+      sphere2.position.x = 3;
+      sphere2.name = "sphere2";
+      sphere2.material = new BABYLON.StandardMaterial("sphere2Material", scene);
+      sphere2.material.diffuseColor = new BABYLON.Color3(1, 1, 0); // Yellow
+
+      const box2 = BABYLON.MeshBuilder.CreateBox("box2", {});
+      box2.position.x = 6;
+      box2.name = "box2";
+      box2.material = new BABYLON.StandardMaterial("box2Material", scene);
+      box2.material.diffuseColor = new BABYLON.Color3(1, 0, 1); // Magenta
+
+      // Register pointer event for each mesh
+      scene.onPointerObservable.add((pointerInfo) => {
+        switch (pointerInfo.type) {
+          case BABYLON.PointerEventTypes.POINTERDOWN:
+            const pickResult = scene.pick(pointerInfo.event.clientX, pointerInfo.event.clientY);
+            if (pickResult && pickResult.pickedMesh) {
+              const pickedMesh = pickResult.pickedMesh;
+              if (pickedMesh.name === "box1") {
+                // Your pointer down logic for box1
+              } else if (pickedMesh.name === "sphere1") {
+                // Your pointer down logic for sphere1
+              } else if (pickedMesh.name === "cylinder1") {
+                // Your pointer down logic for cylinder1
+              } else if (pickedMesh.name === "sphere2") {
+                // Your pointer down logic for sphere2
+              } else if (pickedMesh.name === "box2") {
+                // Your pointer down logic for box2
+              }
+            }
+            break;
+          default:
+            break;
+        }
+      });
+
+      const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 15, new BABYLON.Vector3(0, 0, 0));
+      camera.attachControl(canvas, true);
+      const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 2, 0));
+
+      return scene;
+    };
+
+    const scene = createScene(); //Call the createScene function
+
+    // Register a render loop to repeatedly render the scene
+    engine.runRenderLoop(function () {
+      scene.render();
+    });
+
+    // Watch for browser/canvas resize events
+    window.addEventListener("resize", function () {
+      engine.resize();
+    });
+  </script>
+  <h1>Week 15 - Index</h1>
+  <a href="mybuild.html" class="link">Go to My Build</a>
+</body>
+</html>

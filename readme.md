@@ -1,5 +1,1 @@
-##Week 6 Read Me
-
-For transparency, I did use ChatGPT a little bit this week to assist with finding errors. I  used it to help check my code and to assist in fixing an issue I was running into. ChatGPT is where the sessionStorage suggestion came from when I was running into an issue using localStorage. I suspect my issue with localStorage was being caused by a small syntax error I had missed. It initially worked, and ChatGPT suggested I changed it. 
-
-I am finding that ChatGPT is good at helping if you know where to ask it to look, but sometimes it is really confusing too. At one point it told me to write JSON on the backend development and I don't have the first idea of where to start there. I am getting better at figuring that out, and more comfortable with naming. I have looked into JSON a little bit prior to this week, and it is interesting. 
+I did use ChatGPt to help this week. I tried to get it to move the individual shapes in the index.html file individually, but that was unsuccesful. I thought the products rendered were alright. I feel like with ChatGPT you have to just keep repeating what you want it to do and it says "Apologies for the oversight" a lot. It's useful for getting things done quickly and for checking the meaning of the errors in the developer console, but it can be a whole days work just getting it to do what you want at times. 
